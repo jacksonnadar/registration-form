@@ -22,7 +22,7 @@
             Qualification: <%=user.qualification ? user.qualification : 'Not Provided' %><br />
             Intrest: <%=user.intrest ? user.intrest : 'Not Provided' %><br /> 
           </p>
-          <button class="button <%=user.arrived ? 'arrived' : 'not-arrived'  %>"><%=user.arrived ? 'ARRIVED' : 'NOT ARRIVED' %></button>
+          <button data-arrived=<%=user.arrived %> class="button <%=user.arrived ? 'arrived' : 'not-arrived'  %>"><%=user.arrived ? 'ARRIVED' : 'NOT ARRIVED' %></button>
         </div>
           <% }); %> 
       </div>

@@ -2,23 +2,39 @@ const buttons = document.querySelectorAll(".button");
 
 buttons.forEach(button => {
   button.addEventListener("click", () => {
-    const id = button.parentNode.dataset.id;
+    console.log(button.dataset.arrived);
 
-    fetch(`/register/arrival/${id}`, {
-      method: "PATCH",
-      body: JSON.stringify({
-        arrived: true
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
-    })
-      .then(response => response.json())
-      .then(json => {
-        if (json.err) console.log(json);
-        button.classList.remove("not-arrived");
-        button.classList.add("arrived");
-        button.innerHTML = "Arrived";
-      });
+    if (button.dataset.arrived === "true") {
+      updateArrival(button, false, "not-arrived", "arrived");
+      button.dataset.arrived = "false";
+      return;
+    }
+    if (button.dataset.arrived == "false") {
+      updateArrival(button, true, "arrived", "not-arrived");
+      button.dataset.arrived = "true";
+    }
   });
 });
+
+function updateArrival(button, arrived, add, remove) {
+  const id = button.parentNode.dataset.id;
+
+  fetch(`/register/arrival/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      arrived: arrived
+    }),
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    }
+  })
+    .then(response => response.json())
+    .then(json => {
+      console.log(json);
+
+      if (json.err) console.log(json);
+      button.classList.remove(remove);
+      button.classList.add(add);
+      button.innerHTML = add.toUpperCase();
+    });
+}

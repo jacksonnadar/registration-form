@@ -72,7 +72,7 @@ router.patch("/arrival/:id", async (req, res) => {
     const result = await Register.updateOne(
       { _id: id },
       {
-        $set: { arrived: true }
+        $set: { arrived: req.body.arrived }
       }
     );
     res.status(200).json(result);

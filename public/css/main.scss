@@ -99,6 +99,9 @@ body {
         grid-template-columns: 1fr;
         background: #f8f9fb;
       }
+      @include mobile {
+        margin-right: 0;
+      }
 
       display: grid;
       grid-template-columns: 0.7fr 1.9fr;
@@ -133,7 +136,7 @@ body {
           margin: 80px auto;
         }
         @include smallmobile {
-          margin: 80px 5vw;
+          margin: 80px auto;
         }
         .heading {
           margin: 1rem 0;
@@ -246,7 +249,7 @@ body {
     }
     .gender {
       @include mobile {
-        width: 100%;
+        width: 90%;
       }
       width: 80%;
       display: flex;
@@ -279,7 +282,7 @@ body {
         width: 90%;
       }
       @include mobile {
-        width: 100% !important;
+        width: 90% !important;
       }
       background: none;
       font-family: "Montserrat", sans-serif;
