@@ -10,7 +10,7 @@ console.log(form);
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  const name = form.name.value.trim();
+  const name = form.name.value.toLowerCase().trim();
 
   if (!name) {
     form.name.value = "";
