@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 
 router.get("/thankyou", async (req, res) => {
   try {
-    res.send("<h2>Thank you</h2>");
+    res.render("thankyou.ejs");
   } catch (err) {
     res.status(500).json({ err: err });
   }

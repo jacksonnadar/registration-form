@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 7080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+app.set("view engine", "ejs");
+
 mongoose.connect(process.env.DATABASE_URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true
