@@ -1,7 +1,3 @@
-const menu = document.getElementById("menu");
-const nav = document.querySelector(".items");
-const overlay = document.querySelector(".overlay");
-const social = document.querySelector(".social");
 const messages = document.querySelectorAll(".error");
 const infos = document.querySelectorAll(".item__label");
 const inputs = document.querySelectorAll(".item__input,.item__select");
@@ -11,6 +7,7 @@ console.log(form);
 form.addEventListener("submit", e => {
   e.preventDefault();
   const name = form.name.value.toLowerCase().trim();
+  console.log(form.email.value);
 
   if (!name) {
     form.name.value = "";
@@ -84,28 +81,3 @@ function deactiveMessage(index) {
     i--;
   }, duration);
 }
-
-infos.forEach((info, index) => {
-  info.addEventListener("click", messagePrinting.bind(null, index));
-});
-function messagePrinting(index) {
-  return;
-}
-
-menu.addEventListener("click", () => {
-  if (nav.classList.contains("items--active")) {
-    nav.classList.remove("items--active");
-    overlay.classList.remove("overlay--active");
-    social.classList.remove("social--active");
-  } else {
-    nav.classList.add("items--active");
-    overlay.classList.add("overlay--active");
-    social.classList.add("social--active");
-  }
-});
-
-overlay.addEventListener("click", () => {
-  nav.classList.remove("items--active");
-  overlay.classList.remove("overlay--active");
-  social.classList.remove("social--active");
-});

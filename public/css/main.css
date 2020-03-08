@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 @media only screen and (max-width: 1275px) {
   :root {
     font-size: 12px;
@@ -19,29 +21,6 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-}
-
-body {
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  background: linear-gradient(51.08deg, #3f189a -4.35%, rgba(81, 46, 164, 0.904595) 20.98%, rgba(100, 64, 182, 0.891639) 33.98%, rgba(148, 165, 255, 0.845866) 103.86%);
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  font-family: "Roboto", sans-serif;
-}
-
-@media only screen and (max-width: 1275px) {
-  body {
-    overflow: auto;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  body {
-    height: auto;
-    width: 100vw;
-  }
 }
 
 header {
@@ -287,6 +266,41 @@ header .nav .social__icons svg:hover path {
 
 header .nav .social__icons svg:active path {
   fill: #6444ae;
+}
+
+@media only screen and (max-width: 1275px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+body {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  background: linear-gradient(51.08deg, #3f189a -4.35%, rgba(81, 46, 164, 0.904595) 20.98%, rgba(100, 64, 182, 0.891639) 33.98%, rgba(148, 165, 255, 0.845866) 103.86%);
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+}
+
+@media only screen and (max-width: 1275px) {
+  body {
+    overflow: auto;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  body {
+    height: auto;
+    width: 100vw;
+  }
 }
 
 .main__element {

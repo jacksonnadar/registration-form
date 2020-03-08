@@ -8,6 +8,7 @@ const registerSchema = mongoose.Schema({
   qualification: { type: String, require: true },
   intrest: { type: String, require: true },
   gender: { type: String, require: true },
+  arrived: { type: Boolean, require: true },
   date: { type: Date, default: Date.now() }
 });
 

@@ -1,0 +1,63 @@
+@import "./partials/navbar";
+
+body {
+  background: linear-gradient(
+    51.08deg,
+    #3f189a -4.35%,
+    rgba(81, 46, 164, 0.904595) 20.98%,
+    rgba(100, 64, 182, 0.891639) 33.98%,
+    #94a5ffd8 103.86%
+  );
+  min-height: 100vh;
+
+  font-family: "Roboto", sans-serif;
+}
+
+.container {
+  .wrapper {
+    margin: 50px 10vw;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    row-gap: 5vh;
+    .user {
+      background-color: #f8f9fb;
+      border-radius: 10px;
+      width: 100%;
+      padding: 1rem 1.5rem;
+
+      .name {
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 21px;
+        color: #474343;
+      }
+      .para-container {
+        margin: 10px 0;
+        font-family: Roboto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.02em;
+      }
+      button {
+        border: none;
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 10px;
+        padding: 7px;
+        color: #f8f9fb;
+        width: 100%;
+      }
+      .arrived {
+        background-color: rgb(21, 119, 50);
+      }
+      .not-arrived {
+        background-color: rgb(223, 46, 46);
+      }
+    }
+  }
+}

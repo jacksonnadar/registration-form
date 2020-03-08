@@ -1,31 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
-@mixin desktop {
-  @media only screen and (max-width: 1275px) {
-    @content;
-  }
-}
-@mixin ipadpro {
-  @media only screen and (max-width: 1024px) {
-    @content;
-  }
-}
-@mixin ipad {
-  @media only screen and (max-width: 768px) {
-    @content;
-  }
-}
-@mixin mobile {
-  @media only screen and (max-width: 600px) {
-    @content;
-  }
-}
-@mixin smallmobile {
-  @media only screen and (max-width: 375px) {
-    @content;
-  }
-}
+@import "./partials/navbar";
+@import "./partials/screensize/screensize";
 :root {
   @include desktop {
     font-size: 12px;
@@ -34,14 +11,6 @@
     font-size: 16px;
   }
 }
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   transition: all 0.2s ease-in-out;
   background: linear-gradient(
@@ -63,179 +32,6 @@ body {
   overflow: hidden;
   font-family: "Roboto", sans-serif;
 }
-
-header {
-  position: sticky;
-  z-index: 4;
-  top: 0;
-  height: 4.3rem;
-  width: 100%;
-  min-height: 70px;
-  background-color: #f8f9fb;
-  display: flex;
-  justify-content: space-between;
-  .menu {
-    position: fixed;
-    z-index: 5;
-    right: 100%;
-    @include ipadpro {
-      right: 50px;
-      top: 15px;
-      width: 40px;
-    }
-    @include mobile {
-      right: 20px;
-    }
-  }
-
-  .logo {
-    margin: auto 0;
-    margin-left: 50px;
-    @include mobile {
-      margin-left: 20px;
-    }
-  }
-
-  .nav {
-    margin-left: 60px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    z-index: 4;
-    .overlay--active {
-      left: 60vw !important;
-    }
-    .overlay {
-      display: none;
-      transition: all 0.2s ease-in-out 0.1s;
-
-      @include ipadpro {
-        display: block;
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 100vw;
-        right: 0;
-        background-color: #000000e8;
-        z-index: 2;
-      }
-    }
-    .items--active {
-      left: 0 !important;
-    }
-
-    .items {
-      transition: all 0.3s ease-in-out;
-
-      .item:hover,
-      .item:focus,
-      .item:active {
-        color: #6444ae;
-      }
-      @include ipadpro {
-        min-width: 200px;
-        margin-top: 69px;
-        flex-direction: column;
-        justify-content: stretch;
-        font-size: 3rem;
-        position: fixed;
-        width: 60vw;
-        background-color: #f8f9fb;
-        z-index: 3;
-        left: -200vw;
-        top: 0;
-        bottom: 0;
-        .item {
-          margin: 4vh 0;
-          font-size: 24px;
-          @include mobile {
-            font-size: 18px;
-          }
-        }
-      }
-      height: 100%;
-      min-width: 600px;
-      display: flex;
-      flex-direction: row;
-      list-style: none;
-      justify-content: space-between;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 18px;
-      line-height: 21px;
-      align-items: center;
-      text-align: center;
-      letter-spacing: 0.02em;
-      color: #474343;
-      cursor: pointer;
-    }
-    .social--active {
-      left: 80vw !important;
-      transition: left 0.2s ease-in-out 0.3s;
-    }
-    .social {
-      transition: left 0.4s ease-in-out 0.1s;
-      @include desktop {
-        margin-right: 4rem;
-      }
-
-      @include ipadpro {
-        min-width: 0px;
-        width: auto;
-        margin-right: 0;
-        flex-direction: column;
-        position: fixed;
-        top: 50vh;
-        left: 150%;
-        transform: translateY(-50%);
-        right: 0;
-        z-index: 4;
-        &__icons {
-          margin: 4vh 0;
-          height: 7vh;
-          width: auto;
-          svg {
-            height: 60%;
-            width: auto;
-            path {
-              fill: #f8f9fb;
-            }
-          }
-        }
-      }
-      @include mobile {
-        margin-right: 10vw;
-      }
-      min-width: 200px;
-      display: flex;
-      flex-direction: row;
-      list-style: none;
-      justify-content: space-between;
-      align-items: center;
-      margin-right: 6rem;
-      &__icons {
-        cursor: pointer;
-        svg {
-          path {
-            transition: fill 0.1s ease-in-out;
-          }
-        }
-        svg:hover {
-          path {
-            fill: #99a2f2;
-          }
-        }
-        svg:active {
-          path {
-            fill: #6444ae;
-          }
-        }
-      }
-    }
-  }
-}
-
 .main {
   &__element {
     @include ipadpro {

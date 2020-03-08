@@ -14,6 +14,15 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/users", async (req, res) => {
+  try {
+    const users = await Register.find();
+    res.render("users", { users });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 router.get("/thankyou", async (req, res) => {
   try {
     res.render("thankyou.ejs");
@@ -24,6 +33,8 @@ router.get("/thankyou", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
+    console.log(req.body.email);
+    let encryptedemail;
     const username = await Register.findOne({ name: req.body.name });
     if (username) {
       return res
@@ -31,17 +42,10 @@ router.post("/", async (req, res) => {
         .json({ name: `${req.body.name} is already registered` });
     }
     if (req.body.email) {
-      const encryptedemail = cryptr.encrypt(req.body.email);
+      encryptedemail = cryptr.encrypt(req.body.email);
     } else {
       encryptedemail = "";
     }
-    // if (!req.body.qualification) {
-    //   const qualification = "";
-    // }
-    // if (!req.body.intrest) {
-    //   const intrest = "";
-    // }
-    // const decryptedString = cryptr.decrypt(encryptedString);
     const register = new Register({
       name: req.body.name,
       email: encryptedemail,
@@ -49,6 +53,7 @@ router.post("/", async (req, res) => {
       qualification: req.body.qualification,
       intrest: req.body.intrest,
       gender: req.body.gender,
+      arrived: false,
       date: Date.now()
     });
 
@@ -58,6 +63,22 @@ router.post("/", async (req, res) => {
     res.status(303).json({ msg: "sucsess" });
   } catch (err) {
     res.status(500).json({ err: err });
+  }
+});
+
+router.patch("/arrival/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const result = await Register.updateOne(
+      { _id: id },
+      {
+        $set: { arrived: true }
+      }
+    );
+    res.status(200).json(result);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ err: true });
   }
 });
 

@@ -8,7 +8,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.set("view engine", "ejs");
-
+app.get("/", (req, res) => {
+  res.render("index");
+});
 mongoose.connect(process.env.DATABASE_URI, {
   useUnifiedTopology: true,
   useNewUrlParser: true

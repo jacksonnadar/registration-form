@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./favicon-32x32.png"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/main.css" />
+    <script defer src="/javascript/navbar.js"></script>
+    <script defer src="/javascript/form.js"></script>
+    <title>Register</title>
+  </head>
+  <body>
+    <%- include('./partials/nav'); -%>
+    <div class="main">
+      <div class="main__element">
+        <div class="greating-container">
+          <div class="greating">
+            <div class="greating__img">
+              <img src="/img/aws.png" alt="computer" />
+            </div>
+            <h2 class="greating__welcome">WELCOME</h2>
+            <p class="greating__disc">
+              Get yourself registered.Thank you by Data ninjas
+            </p>
+          </div>
+        </div>
+
+        <div class="form-container">
+          <div class="form-container__form-image">
+            <img src="/img/TechnologyEdit 1.png" alt="" />
+          </div>
+          <div class="form-container__form-container">
+            <h6 class="heading">*Registration for codebug</h6>
+
+            <div class="actual-form">
+              <form id="form" class="form" action="#">
+                <div class="item">
+                  <div class="item__label">
+                    <label for="name" class="label required">Full name</label
+                    ><img src="/img/question.svg" alt="?" class="info" />
+                    <span
+                      data-message="Name should be atleast 3 char"
+                      class="error"
+                    ></span>
+                  </div>
+                  <input
+                    required
+                    minlength="3"
+                    maxlength="25"
+                    type="text"
+                    class="item__input"
+                    name="name"
+                    id="name"
+                  />
+                </div>
+                <div class="item">
+                  <div class="item__label">
+                    <label for="email" class="label ">Email</label
+                    ><img src="/img/question.svg" alt="?" class="info" />
+                    <span
+                      data-message="We will update you via e-mail"
+                      class="error"
+                    ></span>
+                  </div>
+
+                  <input
+                    type="text"
+                    class="item__input"
+                    name="email"
+                    id="email"
+                  />
+                </div>
+                <div class="item">
+                  <div class="item__label">
+                    <label for="age" class="label required">Age</label
+                    ><img src="/img/question.svg" alt="?" class="info" />
+                    <span
+                      data-message="Age will help us identify our audience"
+                      class="error"
+                    ></span>
+                  </div>
+
+                  <input
+                    required
+                    min="5"
+                    max="80"
+                    type="number"
+                    class="item__input"
+                    name="age"
+                    id="age"
+                  />
+                </div>
+                <div class="item">
+                  <div class="item__label">
+                    <label for="qualification" class="label "
+                      >Qualification</label
+                    ><img src="/img/question.svg" alt="?" class="info" />
+                    <span
+                      data-message="Select your current qualification"
+                      class="error"
+                    ></span>
+                  </div>
+
+                  <select
+                    class="item__select"
+                    name="qualification"
+                    id="qualification"
+                  >
+                    <option hidden></option>
+                    <option value="SSC/HSC">SSC/HSC</option>
+                    <option value="Diplom">Diplom</option>
+                    <option value="Graduation">Graduation</option>
+                    <option value="Post-Graduation">Post-Graduation</option>
+                    <option value="Not a student">Not a student</option>
+                  </select>
+                </div>
+                <div class="item">
+                  <div class="item__label">
+                    <label for="intrest" class="label ">Intrests</label
+                    ><img src="/img/question.svg" alt="?" class="info" />
+                    <span
+                      data-message="Lets us know what you like"
+                      class="error"
+                    ></span>
+                  </div>
+
+                  <select class="item__select" name="intrest" id="intrest">
+                    <option hidden></option>
+                    <option value="Science & technology"
+                      >Science & technology</option
+                    >
+                    <option value="History">History</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Others">Others</option>
+                  </select>
+                </div>
+                <div class="item">
+                  <div class="item__label radio">
+                    <label for="gender" class="label required">Gender</label
+                    ><img src="/img/question.svg" alt="?" class="info" />
+                    <span data-message="??" class="error"></span>
+                  </div>
+                  <div class="gender">
+                    <div class="gender__item">
+                      <input
+                        required
+                        type="radio"
+                        id="male"
+                        name="gender"
+                        value="male"
+                      />
+                      <label for="male">Male</label>
+                    </div>
+                    <div class="gender__item">
+                      <input
+                        type="radio"
+                        id="female"
+                        name="gender"
+                        value="female"
+                      />
+                      <label for="female">Female</label>
+                    </div>
+                    <div class="gender__item">
+                      <input
+                        type="radio"
+                        id="other"
+                        name="gender"
+                        value="other"
+                      />
+                      <label for="other">Other</label>
+                    </div>
+                  </div>
+                </div>
+                <button id="register" type="submit">Register</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
