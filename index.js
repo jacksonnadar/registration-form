@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const logger = require("./middleware/logger");
 require("dotenv").config();
-const PORT = process.env.PORT || 7090;
+const PORT = process.env.PORT || 7080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

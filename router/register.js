@@ -26,14 +26,21 @@ router.post("/", async (req, res) => {
   try {
     const username = await Register.findOne({ name: req.body.name });
     if (username) {
-      console.log(cryptr.decrypt(username.email));
-
       return res
         .status(200)
         .json({ name: `${req.body.name} is already registered` });
     }
-
-    const encryptedemail = cryptr.encrypt(req.body.email);
+    if (req.body.email) {
+      const encryptedemail = cryptr.encrypt(req.body.email);
+    } else {
+      encryptedemail = "";
+    }
+    // if (!req.body.qualification) {
+    //   const qualification = "";
+    // }
+    // if (!req.body.intrest) {
+    //   const intrest = "";
+    // }
     // const decryptedString = cryptr.decrypt(encryptedString);
     const register = new Register({
       name: req.body.name,
@@ -46,6 +53,8 @@ router.post("/", async (req, res) => {
     });
 
     const result = await register.save();
+    console.log(result);
+
     res.status(303).json({ msg: "sucsess" });
   } catch (err) {
     res.status(500).json({ err: err });

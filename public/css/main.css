@@ -701,7 +701,7 @@ header .nav .social__icons svg:active path {
 }
 
 .form .item input:hover,
-.form .item input:hiver,
+.form .item input:hover,
 .form .item select:hover,
 .form .item select:active {
   outline: none;
