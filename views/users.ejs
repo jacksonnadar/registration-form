@@ -4,17 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/users.css" />
+    <script defer src="/socket.io/socket.io.js"></script>
     <script defer src="/javascript/navbar.js"></script>
     <script defer src="/javascript/arrivial.js"></script>
     <title>Registered users</title>
   </head>
   <body>
     <%- include('./partials/nav'); -%>
+    <div class="heading"><h1>Faculty</h1></div>
     <div class="container">
       <div class="wrapper">
-        <% users.reverse().forEach(function(user) { %>
+        <% faculty.reverse().forEach(function(user) { %>
           <div data-id=<%=user._id%> class="user">
-          <h class="name">Name: <%= user.name%></h>
+          <h data-name=<%= user.name%> class="name">Name: <%= user.name%></h>
           <p class="para-container">
             E-mail: <%= user.email ? 'Provided' : 'Not provided'%> <br />
             Age: <%=user.age%><br />
@@ -22,7 +24,27 @@
             Qualification: <%=user.qualification ? user.qualification : 'Not Provided' %><br />
             Intrest: <%=user.intrest ? user.intrest : 'Not Provided' %><br /> 
           </p>
-          <button data-arrived=<%=user.arrived %> class="button <%=user.arrived ? 'arrived' : 'not-arrived'  %>"><%=user.arrived ? 'ARRIVED' : 'NOT ARRIVED' %></button>
+          <button data-user="faculty" data-arrived=<%=user.arrived %> class="button <%=user.arrived ? 'arrived' : 'not-arrived'  %>"><%=user.arrived ? 'ARRIVED' : 'NOT ARRIVED' %></button>
+        </div>
+          <% }); %> 
+      </div>
+    </div>
+
+    <div class="heading"><h1>Students</h1></div>
+
+    <div class="container">
+      <div class="wrapper">
+        <% users.reverse().forEach(function(user) { %>
+          <div data-id=<%=user._id%> class="user">
+          <h data-name=<%= user.name%> class="name">Name: <%= user.name%></h>
+          <p class="para-container">
+            E-mail: <%= user.email ? 'Provided' : 'Not provided'%> <br />
+            Age: <%=user.age%><br />
+            Gender: <%=user.gender%><br />
+            Qualification: <%=user.qualification ? user.qualification : 'Not Provided' %><br />
+            Intrest: <%=user.intrest ? user.intrest : 'Not Provided' %><br /> 
+          </p>
+          <button data-user="student" data-arrived=<%=user.arrived %> class="button <%=user.arrived ? 'arrived' : 'not-arrived'  %>"><%=user.arrived ? 'ARRIVED' : 'NOT ARRIVED' %></button>
         </div>
           <% }); %> 
       </div>

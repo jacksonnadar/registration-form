@@ -4,6 +4,15 @@ const mongoose = require("mongoose");
 const Cryptr = require("cryptr");
 const cryptr = new Cryptr(process.env.SECRET_cryptr);
 const Register = require("../api/model/registerSchema");
+const RegisterFaculty = require("../api/model/registerSchemaFaculty");
+
+router.get("/faculty", async (req, res) => {
+  try {
+    res.status(200).render("index", { faculty: true });
+  } catch (err) {
+    res.status(500).json({ err: err });
+  }
+});
 
 router.get("/", async (req, res) => {
   try {
@@ -17,7 +26,8 @@ router.get("/", async (req, res) => {
 router.get("/users", async (req, res) => {
   try {
     const users = await Register.find();
-    res.render("users", { users });
+    const faculty = await RegisterFaculty.find();
+    res.render("users", { users, faculty });
   } catch (err) {
     console.log(err);
   }
@@ -26,13 +36,14 @@ router.get("/users", async (req, res) => {
 router.get("/present", async (req, res) => {
   try {
     const users = await Register.find({ arrived: true });
-    res.render("present", { users });
+    const faculty = await RegisterFaculty.find({ arrived: true });
+    res.render("present", { users, faculty });
   } catch (err) {
     console.log(err);
   }
 });
 
-router.get("/thankyou", async (req, res) => {
+router.get("/thankyou", (req, res) => {
   try {
     res.render("thankyou.ejs");
   } catch (err) {
@@ -40,11 +51,18 @@ router.get("/thankyou", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/", (req, res) => {
+  storeToDb(Register, req, res);
+});
+router.post("/faculty", async (req, res) => {
+  storeToDb(RegisterFaculty, req, res);
+});
+
+async function storeToDb(Collection, req, res) {
   try {
     console.log(req.body.email);
     let encryptedemail;
-    const username = await Register.findOne({ name: req.body.name });
+    const username = await Collection.findOne({ name: req.body.name });
     if (username) {
       return res
         .status(200)
@@ -55,7 +73,7 @@ router.post("/", async (req, res) => {
     } else {
       encryptedemail = "";
     }
-    const register = new Register({
+    const register = new Collection({
       name: req.body.name,
       email: encryptedemail,
       age: req.body.age,
@@ -73,12 +91,19 @@ router.post("/", async (req, res) => {
   } catch (err) {
     res.status(500).json({ err: err });
   }
+}
+
+router.patch("/arrival/:id", (req, res) => {
+  updateArival(Register, req, res);
 });
 
-router.patch("/arrival/:id", async (req, res) => {
+router.patch("/faculty/:id", (req, res) => {
+  updateArival(RegisterFaculty, req, res);
+});
+async function updateArival(Collection, req, res) {
   try {
     const id = req.params.id;
-    const result = await Register.updateOne(
+    const result = await Collection.updateOne(
       { _id: id },
       {
         $set: { arrived: req.body.arrived }
@@ -89,6 +114,5 @@ router.patch("/arrival/:id", async (req, res) => {
     console.log(err);
     res.status(500).json({ err: true });
   }
-});
-
+}
 module.exports = router;

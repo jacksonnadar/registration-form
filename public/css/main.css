@@ -169,13 +169,21 @@ header .nav .items .item:active {
     top: 0;
     bottom: 0;
   }
+}
+
+header .nav .items .item a {
+  text-decoration: none;
+  color: inherit;
+}
+
+@media only screen and (max-width: 1024px) {
   header .nav .items .item {
     margin: 4vh 0;
     font-size: 24px;
   }
 }
 
-@media only screen and (max-width: 1024px) and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
   header .nav .items .item {
     font-size: 18px;
   }

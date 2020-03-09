@@ -2,7 +2,13 @@ const messages = document.querySelectorAll(".error");
 const infos = document.querySelectorAll(".item__label");
 const inputs = document.querySelectorAll(".item__input,.item__select");
 const form = document.getElementById("form");
-console.log(form);
+console.log(window.location.pathname);
+let path;
+// register = JSON.stringify(register);
+if (window.location.pathname === "/") path = "/register";
+if (window.location.pathname === "/register/faculty")
+  path = "/register/faculty";
+console.log(path);
 
 form.addEventListener("submit", e => {
   e.preventDefault();
@@ -22,9 +28,9 @@ form.addEventListener("submit", e => {
     intrest: form.intrest.value,
     gender: form.gender.value
   };
-  // register = JSON.stringify(register);
+
   console.log(register);
-  fetch("/register", {
+  fetch(path, {
     method: "POST",
 
     body: JSON.stringify(register),
@@ -35,7 +41,6 @@ form.addEventListener("submit", e => {
   })
     .then(response => response.json())
     .then(json => {
-      console.log(json.name);
       if (json.name) {
         const errmsg = form.name.parentNode.querySelector(".error");
         errmsg.dataset.message = json.name;
