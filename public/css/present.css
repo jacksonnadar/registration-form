@@ -1,0 +1,298 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
+@media only screen and (max-width: 1275px) {
+  :root {
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  :root {
+    font-size: 16px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  z-index: 4;
+  top: 0;
+  height: 4.3rem;
+  width: 100%;
+  min-height: 70px;
+  background-color: #f8f9fb;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+header .menu {
+  position: fixed;
+  z-index: 5;
+  right: 100%;
+}
+
+@media only screen and (max-width: 1024px) {
+  header .menu {
+    right: 50px;
+    top: 15px;
+    width: 40px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  header .menu {
+    right: 20px;
+  }
+}
+
+header .logo {
+  margin: auto 0;
+  margin-left: 50px;
+}
+
+@media only screen and (max-width: 600px) {
+  header .logo {
+    margin-left: 20px;
+  }
+}
+
+header .nav {
+  margin-left: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  z-index: 4;
+}
+
+header .nav .overlay--active {
+  left: 60vw !important;
+}
+
+header .nav .overlay {
+  display: none;
+  -webkit-transition: all 0.2s ease-in-out 0.1s;
+  transition: all 0.2s ease-in-out 0.1s;
+}
+
+@media only screen and (max-width: 1024px) {
+  header .nav .overlay {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 100vw;
+    right: 0;
+    background-color: #000000e8;
+    z-index: 2;
+  }
+}
+
+header .nav .items--active {
+  left: 0 !important;
+}
+
+header .nav .items {
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  height: 100%;
+  min-width: 600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  list-style: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #474343;
+  cursor: pointer;
+}
+
+header .nav .items .item:hover,
+header .nav .items .item:focus,
+header .nav .items .item:active {
+  color: #6444ae;
+}
+
+@media only screen and (max-width: 1024px) {
+  header .nav .items {
+    min-width: 150px;
+    margin-top: 69px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: stretch;
+        -ms-flex-pack: stretch;
+            justify-content: stretch;
+    font-size: 3rem;
+    position: fixed;
+    width: 60vw;
+    background-color: #f8f9fb;
+    z-index: 3;
+    left: -200vw;
+    top: 0;
+    bottom: 0;
+  }
+  header .nav .items .item {
+    margin: 4vh 0;
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 1024px) and (max-width: 600px) {
+  header .nav .items .item {
+    font-size: 18px;
+  }
+}
+
+header .nav .social--active {
+  left: 80vw !important;
+  -webkit-transition: left 0.2s ease-in-out 0.3s;
+  transition: left 0.2s ease-in-out 0.3s;
+}
+
+header .nav .social {
+  -webkit-transition: left 0.4s ease-in-out 0.1s;
+  transition: left 0.4s ease-in-out 0.1s;
+  min-width: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  list-style: none;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 6rem;
+}
+
+@media only screen and (max-width: 1275px) {
+  header .nav .social {
+    margin-right: 4rem;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  header .nav .social {
+    min-width: 0px;
+    width: auto;
+    margin-right: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    position: fixed;
+    top: 50vh;
+    left: 150%;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    right: 0;
+    z-index: 4;
+  }
+  header .nav .social__icons {
+    margin: 4vh 0;
+    height: 7vh;
+    width: auto;
+  }
+  header .nav .social__icons svg {
+    height: 60%;
+    width: auto;
+  }
+  header .nav .social__icons svg path {
+    fill: #f8f9fb;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  header .nav .social {
+    margin-right: 10vw;
+  }
+}
+
+header .nav .social__icons {
+  cursor: pointer;
+}
+
+header .nav .social__icons svg path {
+  -webkit-transition: fill 0.1s ease-in-out;
+  transition: fill 0.1s ease-in-out;
+}
+
+header .nav .social__icons svg:hover path {
+  fill: #99a2f2;
+}
+
+header .nav .social__icons svg:active path {
+  fill: #6444ae;
+}
+
+body {
+  background: linear-gradient(51.08deg, #3f189a -4.35%, rgba(81, 46, 164, 0.904595) 20.98%, rgba(100, 64, 182, 0.891639) 33.98%, #94a5ffd8 103.86%);
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+}
+
+.container .wrapper {
+  margin: 50px 10vw;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  row-gap: 5vh;
+}
+
+.container .wrapper .user {
+  background-color: #f8f9fb;
+  border-radius: 10px;
+  width: 100%;
+  padding: 1rem 1.5rem;
+}
+
+.container .wrapper .user .name {
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 21px;
+  color: #474343;
+}
+/*# sourceMappingURL=present.css.map */

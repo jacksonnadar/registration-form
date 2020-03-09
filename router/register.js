@@ -23,6 +23,15 @@ router.get("/users", async (req, res) => {
   }
 });
 
+router.get("/present", async (req, res) => {
+  try {
+    const users = await Register.find({ arrived: true });
+    res.render("present", { users });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 router.get("/thankyou", async (req, res) => {
   try {
     res.render("thankyou.ejs");

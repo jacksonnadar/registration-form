@@ -12,7 +12,7 @@
     <%- include('./partials/nav'); -%>
     <div class="container">
       <div class="wrapper">
-        <% users.forEach(function(user) { %>
+        <% users.reverse().forEach(function(user) { %>
           <div data-id=<%=user._id%> class="user">
           <h class="name">Name: <%= user.name%></h>
           <p class="para-container">
