@@ -4,13 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/present.css">
+    <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/favicon-32x32.png"
+  />
     <script defer src="/socket.io/socket.io.js"></script>
     <script defer src="/javascript/socket.js"></script>
     <title>Present</title>
 </head>
 <body>
     <%- include('./partials/nav'); -%>
-    <div class="heading"><h1>Faculty</h1></div>
+    <div class="heading"><h1>Faculty ( <span data-count=<%=faculty.length%> id="faculty-counter" class="counter"><%=faculty.length%></span> ) </h1></div>
 
     <div class="container">
       <div id="faculty" class="wrapper">
@@ -22,7 +28,7 @@
       </div>
     </div>
 
-    <div class="heading"><h1>Students</h1></div>
+    <div class="heading"><h1>Students ( <span data-count=<%=users.length%> id="student-counter" class="counter"><%=users.length%></span> ) </h1></div>
 
     <div  class="container">
         <div id="student" class="wrapper">

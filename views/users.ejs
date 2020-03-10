@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/users.css" />
+    <link
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="/favicon-32x32.png"
+  />
     <script defer src="/socket.io/socket.io.js"></script>
     <script defer src="/javascript/navbar.js"></script>
     <script defer src="/javascript/arrivial.js"></script>
@@ -11,12 +17,12 @@
   </head>
   <body>
     <%- include('./partials/nav'); -%>
-    <div class="heading"><h1>Faculty</h1></div>
+    <div class="heading"><h1>Faculty <span class="counter"> ( <%=faculty.length%> )</span></h1></div>
     <div class="container">
       <div class="wrapper">
         <% faculty.reverse().forEach(function(user) { %>
           <div data-id=<%=user._id%> class="user">
-          <h data-name=<%= user.name%> class="name">Name: <%= user.name%></h>
+          <h data-name="<%= user.name%>" class="name">Name: <%= user.name%></h>
           <p class="para-container">
             E-mail: <%= user.email ? 'Provided' : 'Not provided'%> <br />
             Age: <%=user.age%><br />
@@ -30,13 +36,13 @@
       </div>
     </div>
 
-    <div class="heading"><h1>Students</h1></div>
+    <div class="heading"><h1>Students <span class="counter"> ( <%=users.length%> )</span> </h1></div>
 
     <div class="container">
       <div class="wrapper">
         <% users.reverse().forEach(function(user) { %>
           <div data-id=<%=user._id%> class="user">
-          <h data-name=<%= user.name%> class="name">Name: <%= user.name%></h>
+          <h data-name="<%= user.name%>" class="name">Name: <%= user.name%></h>
           <p class="para-container">
             E-mail: <%= user.email ? 'Provided' : 'Not provided'%> <br />
             Age: <%=user.age%><br />

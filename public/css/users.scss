@@ -13,6 +13,20 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.heading {
+  width: 100%;
+  background-color: #f8f9fb;
+  color: #474343;
+  margin-top: 25px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    font-size: 25px;
+  }
+}
+
 .container {
   .wrapper {
     margin: 50px 10vw;

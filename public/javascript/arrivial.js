@@ -4,8 +4,6 @@ const buttons = document.querySelectorAll(".button");
 
 buttons.forEach(button => {
   button.addEventListener("click", () => {
-    console.log(button.dataset.arrived);
-
     if (button.dataset.arrived === "true") {
       updateArrival(button, false, "not-arrived", "arrived");
       button.dataset.arrived = "false";
@@ -35,8 +33,6 @@ function updateArrival(button, arrived, add, remove) {
   })
     .then(response => response.json())
     .then(json => {
-      console.log(json);
-
       if (json.err) console.log(json);
       button.classList.remove(remove);
       button.classList.add(add);
@@ -45,13 +41,13 @@ function updateArrival(button, arrived, add, remove) {
       if (button.dataset.user === "faculty") {
         arrived
           ? socket.emit("present", { name, id, users: "faculty" })
-          : socket.emit("absent", { name, id });
+          : socket.emit("absent", { name, id, users: "faculty" });
         return;
       }
       if (button.dataset.user === "student") {
         arrived
           ? socket.emit("present", { name, id, users: "student" })
-          : socket.emit("absent", { name, id });
+          : socket.emit("absent", { name, id, users: "student" });
       }
     });
 }

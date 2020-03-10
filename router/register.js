@@ -16,8 +16,7 @@ router.get("/faculty", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const registerdata = await Register.find();
-    res.send(registerdata);
+    res.status(200).redirect("/");
   } catch (err) {
     res.status(500).json({ err: err });
   }
