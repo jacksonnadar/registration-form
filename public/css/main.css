@@ -710,6 +710,14 @@ body {
   }
 }
 
+@media only screen and (max-width: 375px) {
+  .form .item input[type="text"],
+  .form .item input[type="number"],
+  .form .item select {
+    width: 100% !important;
+  }
+}
+
 .form .item select {
   -webkit-appearance: none;
   cursor: pointer;

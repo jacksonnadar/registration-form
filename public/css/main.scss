@@ -284,6 +284,9 @@ body {
       @include mobile {
         width: 90% !important;
       }
+      @include smallmobile {
+        width: 100% !important;
+      }
       background: none;
       font-family: "Montserrat", sans-serif;
       width: 80%;
