@@ -93,7 +93,7 @@ async function storeToDb(Collection, req, res) {
   }
 }
 
-router.patch("/arrival/:id", (req, res) => {
+router.patch("/arrival/:id", varify, (req, res) => {
   updateArival(Register, req, res);
 });
 
