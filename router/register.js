@@ -5,6 +5,7 @@ const Cryptr = require("cryptr");
 const cryptr = new Cryptr(process.env.SECRET_cryptr);
 const Register = require("../api/model/registerSchema");
 const RegisterFaculty = require("../api/model/registerSchemaFaculty");
+const varify = require("../middleware/auth");
 
 router.get("/faculty", async (req, res) => {
   try {
@@ -22,7 +23,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/users", async (req, res) => {
+router.get("/users", varify, async (req, res) => {
   try {
     const users = await Register.find();
     const faculty = await RegisterFaculty.find();
@@ -114,4 +115,26 @@ async function updateArival(Collection, req, res) {
     res.status(500).json({ err: true });
   }
 }
+
+router.get("/login", (req, res) => {
+  try {
+    res.status(200).render("login", { msg: "" });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.post("/login", (req, res) => {
+  if (req.body.email !== "sahyog@dataninja.com")
+    return res
+      .status(200)
+      .render("login", { msg: "invalid email our password" });
+  if (req.body.password !== "dataninjachamp")
+    return res
+      .status(200)
+      .render("login", { msg: "invalid email our password" });
+
+  req.session.varified = true;
+  res.status(200).redirect("/register/users");
+});
 module.exports = router;

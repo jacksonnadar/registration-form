@@ -4,10 +4,21 @@ const server = require("http").createServer(app);
 const io = require("socket.io").listen(server);
 const mongoose = require("mongoose");
 const logger = require("./middleware/logger");
+const session = require("express-session");
+const cookieParser = require("cookie-parser");
 require("dotenv").config();
 const PORT = process.env.PORT || 7080;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use(cookieParser());
+app.use(
+  session({
+    resave: true,
+    saveUninitialized: true,
+    secret: "adeugdhsvfshjsiwhf0f2f0f25g45h0j5j20"
+  })
+);
 
 app.set("view engine", "ejs");
 app.get("/", (req, res) => {
