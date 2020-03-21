@@ -12,19 +12,11 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/main.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script>
-      let recaptcha;
-      var verifyCallback = function(response) {
-        recaptcha = response;
-      };
-      var widgetId1;
-      var widgetId2;
-      var onloadCallback = function() {
-        grecaptcha.render("example3", {
-          sitekey: "6LcyO-EUAAAAADoSQQJDhDi1H8xE2EcY_lrMWqvq",
-          callback: verifyCallback,
-          theme: "dark"
-        });
+      let captcha_response;
+      var correctCaptcha = function(response) {
+        captcha_response = response;
       };
     </script>
     <script defer src="/javascript/navbar.js"></script>
@@ -178,8 +170,11 @@
                 </div>
                 <div class="item">
                   <div
-                    id="example3"
-                    style="transform:scale(0.77);transform-origin:0 0;margin: 0 auto;"
+                    style="transform: scale(.77);"
+                    class="g-recaptcha"
+                    data-theme="dark"
+                    data-callback="correctCaptcha"
+                    data-sitekey="6LcyO-EUAAAAADoSQQJDhDi1H8xE2EcY_lrMWqvq"
                   ></div>
                 </div>
 

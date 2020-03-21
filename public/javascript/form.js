@@ -13,9 +13,8 @@ console.log(path);
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  if (!recaptcha) {
-    return;
-  }
+  console.log(captcha_response);
+  if (!captcha_response) return alert("verify your are nat a robot");
   const name = form.name.value.toLowerCase().trim();
   console.log(form.email.value);
 
