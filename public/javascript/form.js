@@ -2,6 +2,19 @@ const messages = document.querySelectorAll(".error");
 const infos = document.querySelectorAll(".item__label");
 const inputs = document.querySelectorAll(".item__input,.item__select");
 const form = document.getElementById("form");
+let recaptcha;
+var verifyCallback = function(response) {
+  recaptcha = response;
+};
+var widgetId1;
+var widgetId2;
+var onloadCallback = function() {
+  grecaptcha.render("example3", {
+    sitekey: "6LcyO-EUAAAAADoSQQJDhDi1H8xE2EcY_lrMWqvq",
+    callback: verifyCallback,
+    theme: "dark"
+  });
+};
 console.log(window.location.pathname);
 let path;
 // register = JSON.stringify(register);
@@ -12,6 +25,9 @@ console.log(path);
 
 form.addEventListener("submit", e => {
   e.preventDefault();
+  if (!recaptcha) {
+    return;
+  }
   const name = form.name.value.toLowerCase().trim();
   console.log(form.email.value);
 
@@ -25,7 +41,6 @@ form.addEventListener("submit", e => {
     email: form.email.value.trim(),
     age: form.age.value,
     qualification: form.qualification.value,
-    intrest: form.intrest.value,
     gender: form.gender.value
   };
 

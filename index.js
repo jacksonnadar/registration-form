@@ -7,7 +7,7 @@ const logger = require("./middleware/logger");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 require("dotenv").config();
-const PORT = process.env.PORT || 7080;
+const PORT = process.env.PORT || 7090;
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

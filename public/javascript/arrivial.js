@@ -1,6 +1,47 @@
 const socket = io();
-
 const buttons = document.querySelectorAll(".button");
+const search = document.getElementById("search");
+const search_results = document.querySelector(".search-results");
+let studentnames = [];
+let new_results = [];
+let result_focus;
+
+students.forEach(student => {
+  studentnames.push(student.name);
+});
+
+search.addEventListener("input", e => {
+  e.preventDefault();
+  search_results.innerHTML = "";
+  new_results = [];
+  const input_value = e.target.value.trim();
+  if (!input_value) return;
+
+  studentnames.forEach(name => {
+    var patt = new RegExp(`^(${input_value})`, "gi");
+    var result = name.match(patt);
+
+    if (result) new_results.push(name);
+  });
+  new_results.forEach(result => {
+    const newelement = document.createElement("li");
+    newelement.innerText = result;
+    newelement.addEventListener("click", () => {
+      const focus_to = document.getElementById(`btn-${result}`);
+      focus_to.focus();
+    });
+    search_results.prepend(newelement);
+  });
+});
+
+search.addEventListener("focus", e => {
+  search_results.classList.add("search-results--active");
+});
+search.addEventListener("blur", e => {
+  setTimeout(() => {
+    search_results.classList.remove("search-results--active");
+  }, 100);
+});
 
 buttons.forEach(button => {
   button.addEventListener("click", () => {

@@ -8,6 +8,7 @@
       sizes="32x32"
       href="./favicon-32x32.png"
     />
+    <script type="text/javascript"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/main.css" />
@@ -122,26 +123,7 @@
                     <option value="Not a student">Not a student</option>
                   </select>
                 </div>
-                <div class="item">
-                  <div class="item__label">
-                    <label for="intrest" class="label ">Intrests</label
-                    ><img src="/img/question.svg" alt="?" class="info" />
-                    <span
-                      data-message="Lets us know what you like"
-                      class="error"
-                    ></span>
-                  </div>
 
-                  <select class="item__select" name="intrest" id="intrest">
-                    <option hidden></option>
-                    <option value="Science & technology"
-                      >Science & technology</option
-                    >
-                    <option value="History">History</option>
-                    <option value="Finance">Finance</option>
-                    <option value="Others">Others</option>
-                  </select>
-                </div>
                 <div class="item">
                   <div class="item__label radio">
                     <label for="gender" class="label required">Gender</label
@@ -179,6 +161,13 @@
                     </div>
                   </div>
                 </div>
+                <div class="item">
+                  <div
+                    id="example3"
+                    style="transform:scale(0.77);transform-origin:0 0;margin: 0 auto;"
+                  ></div>
+                </div>
+
                 <button id="register" type="submit">Register</button>
               </form>
             </div>
@@ -186,5 +175,11 @@
         </div>
       </div>
     </div>
+
+    <script
+      src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+      async
+      defer
+    ></script>
   </body>
 </html>

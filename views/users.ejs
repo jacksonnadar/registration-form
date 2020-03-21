@@ -16,12 +16,16 @@
     <title>Registered users</title>
   </head>
   <body>
+    <script>
+      var students = <%- JSON.stringify(users) %>
+      
+    </script>
     <%- include('./partials/nav'); -%>
     <div class="heading"><h1>Faculty <span class="counter"> ( <%=faculty.length%> )</span></h1></div>
     <div class="container">
       <div class="wrapper">
         <% faculty.reverse().forEach(function(user) { %>
-          <div data-id=<%=user._id%> class="user">
+          <div id="<%= user.name%>" data-id=<%=user._id%> class="user">
           <h data-name="<%= user.name%>" class="name">Name: <%= user.name%></h>
           <p class="para-container">
             E-mail: <%= user.email ? 'Provided' : 'Not provided'%> <br />
@@ -36,12 +40,18 @@
       </div>
     </div>
 
-    <div class="heading"><h1>Participants <span class="counter"> ( <%=users.length%> )</span> </h1></div>
+    <div class="heading"><h1>Participants <span class="counter"> ( <%=users.length%> )</span> </h1>
+      <div class="search">
+        <input type="text" placeholder="search" id="search" autocomplete="off" name="search" id="">
+        <ul class="search-results">
+          
+        </ul>
+      </div></div>
 
     <div class="container">
       <div class="wrapper">
         <% users.reverse().forEach(function(user) { %>
-          <div data-id=<%=user._id%> class="user">
+          <div id="<%= user.name%>" data-id=<%=user._id%> class="user">
           <h data-name="<%= user.name%>" class="name">Name: <%= user.name%></h>
           <p class="para-container">
             E-mail: <%= user.email ? 'Provided' : 'Not provided'%> <br />
@@ -50,7 +60,7 @@
             Qualification: <%=user.qualification ? user.qualification : 'Not Provided' %><br />
             Intrest: <%=user.intrest ? user.intrest : 'Not Provided' %><br /> 
           </p>
-          <button data-user="student" data-arrived=<%=user.arrived %> class="button <%=user.arrived ? 'arrived' : 'not-arrived'  %>"><%=user.arrived ? 'ARRIVED' : 'NOT ARRIVED' %></button>
+          <button id="btn-<%=user.name %>" data-user="student" data-arrived=<%=user.arrived %> class="button <%=user.arrived ? 'arrived' : 'not-arrived'  %>"><%=user.arrived ? 'ARRIVED' : 'NOT ARRIVED' %></button>
         </div>
           <% }); %> 
       </div>
