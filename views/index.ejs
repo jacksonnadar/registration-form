@@ -12,6 +12,21 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/main.css" />
+    <script>
+      let recaptcha;
+      var verifyCallback = function(response) {
+        recaptcha = response;
+      };
+      var widgetId1;
+      var widgetId2;
+      var onloadCallback = function() {
+        grecaptcha.render("example3", {
+          sitekey: "6LcyO-EUAAAAADoSQQJDhDi1H8xE2EcY_lrMWqvq",
+          callback: verifyCallback,
+          theme: "dark"
+        });
+      };
+    </script>
     <script defer src="/javascript/navbar.js"></script>
     <script defer src="/javascript/form.js"></script>
     <title>Register</title>
